@@ -1,0 +1,9 @@
+:root{
+    --color-primary: #0E6795;
+    --color-secondary: #0077B5;
+
+    --color-dark-blue: #11175D;
+
+    --font-primary: 'Barlow', sans-serif;
+    --font-secondary: 'Nunito', sans-serif;
+}

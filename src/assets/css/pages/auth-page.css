@@ -1,0 +1,16 @@
+.auth__title,
+.auth__text
+{
+    font-family: var(--font-secondary);
+    color: var(--color-dark-blue);
+}
+
+.auth__title{
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.auth__text{
+    opacity: 0.5;
+}
