@@ -1,11 +1,12 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
-import RootLayout from "../layout/main/RootLayout";
 import LoginPage from "../pages/LoginPage";
+import RegisterPage from "../pages/RegisterPage";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route path="/" element={<RootLayout />}>
-            <Route index element={<LoginPage />} />
+        <Route>
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
         </Route>
     )
 );

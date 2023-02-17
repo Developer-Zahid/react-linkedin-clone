@@ -2,7 +2,11 @@
     --color-primary: #0E6795;
     --color-secondary: #0077B5;
 
+    --color-light: #ffffff;
+    --color-dark: #000000;
+
     --color-dark-blue: #11175D;
+    --color-dark-blue-rgb: 17, 23, 93;
 
     --font-primary: 'Barlow', sans-serif;
     --font-secondary: 'Nunito', sans-serif;

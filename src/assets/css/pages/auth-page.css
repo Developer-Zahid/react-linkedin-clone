@@ -1,16 +1,41 @@
 .auth__title,
-.auth__text
+.auth__text,
+.auth__btn
 {
     font-family: var(--font-secondary);
-    color: var(--color-dark-blue);
 }
 
 .auth__title{
+    color: var(--color-dark-blue);
     font-size: 3.5rem;
     font-weight: 700;
     line-height: 1.5;
 }
 
 .auth__text{
-    opacity: 0.5;
+    color: rgba(var(--color-dark-blue-rgb), 0.5);
+    margin-bottom: 4rem;
+}
+
+.auth__btn{
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    font-size: 2rem;
+    font-weight: 600;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+@media (max-width: 575.98px){
+    .auth__btn{
+        font-size: 1.6rem;
+    }
+}
+.auth__btn,
+.auth__btn:is(:hover, :focus-visible, :active)
+{
+    color: var(--color-light) !important;
+}
+.auth__btn:is(:hover, :focus-visible, :active){
+    background-color: var(--color-secondary) !important;
+    border-color: var(--color-secondary) !important;
 }

@@ -1,0 +1,63 @@
+.auth__input,
+.auth__label
+{
+    color: var(--color-dark-blue);
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: var(--font-secondary);
+}
+
+.auth__input{
+    width: 100%;
+    padding: 2.4rem 6rem;
+    border: 1px solid rgba(var(--color-dark-blue-rgb), 0.3);
+    border-radius: 0.9rem;
+}
+
+.auth__label{
+    position: absolute;
+    left: 1px;
+    background-color: var(--color-light);
+    padding-left: 5rem;
+    padding-right: 5rem;
+    text-transform: capitalize;
+    transition: all .25s linear;
+}
+
+.auth__input:not(:focus, :focus-visible) + .auth__label{
+    pointer-events: none;
+}
+
+.auth__input:is(:focus, :focus-visible, :valid, :not(:placeholder-shown)) + .auth__label
+{
+    top: 0;
+    transform: translateX(18%) translateY(-50%);
+    padding-left: 2.5rem;
+    font-size: 1.3rem;
+    color: rgba(var(--color-dark-blue-rgb), 0.7);
+}
+
+.auth__input-icon{
+    color: var(--color-dark-blue) !important;
+}
+
+@media (max-width: 575.98px) {
+    .auth__input,
+    .auth__label
+    {
+        font-size: 1.6rem;
+    }
+
+    .auth__input{
+        padding: 2rem 3rem;
+    }
+
+    .auth__label{
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    .auth__input:is(:focus, :focus-visible, :valid, :not(:placeholder-shown)) + .auth__label{
+        padding-left: 1.5rem;
+    }
+}

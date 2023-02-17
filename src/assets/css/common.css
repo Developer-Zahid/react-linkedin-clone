@@ -12,3 +12,14 @@ body,
 {
   height: 100%;
 }
+
+input,
+button,
+a{
+  font-family: inherit;
+  outline: 0;
+}
+
+[class^="container"]{
+  --bs-gutter-x: 3rem;
+}
