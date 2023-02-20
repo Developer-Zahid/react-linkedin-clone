@@ -38,7 +38,10 @@
 }
 
 .auth__input-icon{
-    color: var(--color-dark-blue) !important;
+    color: var(--color-dark-blue);
+}
+.auth__input-icon:is(:hover, :focus-visible, :active){
+    color: var(--color-primary);
 }
 
 @media (max-width: 575.98px) {

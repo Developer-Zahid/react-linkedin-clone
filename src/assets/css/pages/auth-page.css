@@ -39,3 +39,15 @@
     background-color: var(--color-secondary) !important;
     border-color: var(--color-secondary) !important;
 }
+
+.auth__link{
+    color: var(--color-primary);
+}
+
+.auth__link:is(:hover, :focus){
+    color: var(--color-secondary);
+}
+
+.auth__link:not(:hover, :focus){
+    text-decoration: none;
+}

@@ -17,7 +17,7 @@ const LoginPage = () => {
                       <AuthInput label="Password" type="password" required />
                       <button type='submit' className='btn auth__btn btn-block w-100 rounded-pill'>Sign In</button>
                     </form>
-                    <p className='auth__text text-center mt-4 mb-0'>Don't have an account, <Link to='/register'>Register</Link> here</p>
+                    <p className='auth__text text-center mt-4 mb-0'>Don't have an account, <Link to='/register' className='auth__link'>Register</Link> here</p>
                 </div>
             </div>
         </div>
