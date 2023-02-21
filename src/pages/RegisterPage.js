@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import '../assets/css/pages/auth-page.css'
 import AuthInput from '../components/auth-input/AuthInput'
 
@@ -11,9 +12,20 @@ const RegisterPage = () => {
     register_password: ''
   })
 
+  const [loading, setLoading] = useState(false)
+
   const handelInputValue = (e)=>{
     const {name, value} = e.target
     setInputValue({...inputValue, [name]: value.trim()})
+  }
+
+  const showSuccess = (message)=>{
+    toast.success(message, {
+      autoClose: 3000,
+      draggable: false,
+      progress: undefined,
+      theme: "light",
+    });
   }
 
   const showError = (message)=>{
@@ -35,6 +47,8 @@ const RegisterPage = () => {
     return passwordVerificationRegex.test(password)
   }
 
+  const auth = getAuth();
+
   const handelSubmitClick = () =>{
     if(inputValue.register_email === ''){
       showError("Email is requred")
@@ -48,6 +62,25 @@ const RegisterPage = () => {
       showError("Password is requred")
     }else if(!isValidPassword(inputValue.register_password)){
       showError("Please enter a valid password")
+    }
+
+    if((inputValue.register_email !== '' && isValidEmail(inputValue.register_email)) && inputValue.register_name !== '' && (inputValue.register_password !== '' && isValidPassword(inputValue.register_password))){
+      createUserWithEmailAndPassword(auth, inputValue.register_email, inputValue.register_password)
+      .then((userCredential)=>{
+        const user = userCredential.user;
+        showSuccess("Registered successfully");
+        sendEmailVerification(auth.currentUser)
+        .then(() => {
+          // Email verification sent!
+          // ...
+        });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        if(errorCode.includes('auth/email-already-in-use')){
+          showError("Email is already exist")
+        }
+      });
     }
   }
 
@@ -65,7 +98,15 @@ const RegisterPage = () => {
                       <AuthInput label="Email address" type="email" name="register_email" pattern="^([\w\.])+@[\w]+\.[\w\.\-]{2,4}$" onChange={handelInputValue} required />
                       <AuthInput label="Full name" type="text" name="register_name" onChange={handelInputValue} required />
                       <AuthInput label="Password" type="password" name="register_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onChange={handelInputValue} required />
-                      <button type='submit' onClick={handelSubmitClick} className='btn auth__btn btn-block w-100 rounded-pill'>Sign Up</button>
+                        {
+                          loading ?
+                          <button type='button' className='btn auth__btn btn-block w-100 rounded-pill' disabled>
+                            <div className="spinner-border text-light" role="status"></div>
+                            <span className='ps-3'>Sending...</span>
+                          </button>
+                          :
+                          <button type='button' onClick={handelSubmitClick} className='btn auth__btn btn-block w-100 rounded-pill'>Sign Up</button>
+                        }
                     </form>
                     <p className='auth__text text-center mt-4 mb-0'>Already have an account, <Link to='/' className='auth__link'>Login</Link> here</p>
                 </div>

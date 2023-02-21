@@ -31,11 +31,11 @@
     }
 }
 .auth__btn,
-.auth__btn:is(:hover, :focus-visible, :active)
+.auth__btn:is(:hover, :focus-visible, :active, :disabled)
 {
     color: var(--color-light) !important;
 }
-.auth__btn:is(:hover, :focus-visible, :active){
+.auth__btn:is(:hover, :focus-visible, :active, :disabled){
     background-color: var(--color-secondary) !important;
     border-color: var(--color-secondary) !important;
 }
