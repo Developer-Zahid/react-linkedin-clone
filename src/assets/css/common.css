@@ -20,6 +20,21 @@ a{
   outline: 0;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:autofill,
+input:autofill:hover,
+input:autofill:focus
+{
+  -webkit-background-clip: text;
+  background-clip: text;
+	-webkit-text-fill-color: currentColor;
+	transition: background-color 9999s ease-in-out 0s;
+  -webkit-box-shadow: 0 0 0px 40rem transparent inset;
+  box-shadow: 0 0 0px 40rem transparent inset;
+}
+
 [class^="container"]{
   --bs-gutter-x: 3rem;
 }
